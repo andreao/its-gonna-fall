@@ -9,8 +9,7 @@ var box_instances = []
 var line_index = 0
 var line_heights = []
 
-func _ready():
-	
+func _ready():	
 	# initialize some stupid "levels"
 	var y = 0
 	var dy = -1000
@@ -42,6 +41,7 @@ func next_line():
 	add_child(line_instance)
 	collision_handler.source = collision_handler.target
 	collision_handler.target = line_instance
+	$camera/score.set_number(line_index)
 	line_index += 1
 
 var outside = []
