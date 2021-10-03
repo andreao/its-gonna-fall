@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://gfx/logo.png" type="Texture" id=1]
+[ext_resource path="res://gfx/play_button.png" type="Texture" id=2]
+[ext_resource path="res://intro.gd" type="Script" id=3]
+[ext_resource path="res://play_button.gd" type="Script" id=4]
+[ext_resource path="res://sfx/grab.mp3" type="AudioStream" id=5]
+[ext_resource path="res://sfx/place.mp3" type="AudioStream" id=6]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.843137, 0.890196, 0.898039, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "bounce"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="intro" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 293.183, 405.34 )
+scale = Vector2( 0.321554, 876.152 )
+texture = SubResource( 2 )
+
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 308.23, 262.335 )
+scale = Vector2( 0.82689, 0.829842 )
+texture = ExtResource( 1 )
+
+[node name="play_button" type="TextureButton" parent="."]
+margin_left = 202.847
+margin_top = 516.568
+margin_right = 400.847
+margin_bottom = 615.568
+rect_pivot_offset = Vector2( 99, 45.6 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="play_button"]
+autoplay = "bounce"
+anims/bounce = SubResource( 3 )
+
+[node name="press_sound" type="AudioStreamPlayer2D" parent="play_button"]
+stream = ExtResource( 5 )
+volume_db = 10.0
+
+[node name="release_sound" type="AudioStreamPlayer2D" parent="play_button"]
+stream = ExtResource( 6 )
+volume_db = 10.0
+
+[connection signal="button_down" from="play_button" to="play_button" method="_on_play_button_button_down"]
+[connection signal="button_up" from="play_button" to="play_button" method="_on_play_button_button_up"]
+[connection signal="pressed" from="play_button" to="play_button" method="_on_play_button_pressed"]
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]

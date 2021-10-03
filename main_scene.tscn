@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gfx/ground.png" type="Texture" id=1]
+[ext_resource path="res://main_scene.gd" type="Script" id=2]
+[ext_resource path="res://sfx/theme.mp3" type="AudioStream" id=3]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.843137, 0.890196, 0.898039, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 3 )
+
+[node name="main_scene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="camera_transition_tween" type="Tween" parent="."]
+
+[node name="camera" type="Camera2D" parent="."]
+scale = Vector2( 1, 1 )
+current = true
+zoom = Vector2( 2, 2 )
+
+[node name="bg" type="Sprite" parent="camera"]
+position = Vector2( -5.58596, -1.49402 )
+scale = Vector2( 0.61332, 2113.61 )
+texture = SubResource( 2 )
+
+[node name="ground" type="StaticBody2D" parent="."]
+position = Vector2( -1.86304, 624.936 )
+
+[node name="ground" type="Sprite" parent="ground"]
+scale = Vector2( 1.47406, 1.85749 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ground"]
+position = Vector2( 35.0726, -606.177 )
+scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( 67.2427, 355.261, 15.0962, 379.721, -49.0485, 354.776, -109.557, 325.295, -205.449, 338.78, -250.398, 353.763, -319.882, 333.395, -394.717, 340.522, -476.68, 372.594, -545.565, 358.258, -708.88, 374.739, -679.778, 1054.6, 605.342, 1036.96, 613.78, 365.467, 468.789, 326.793, 369.901, 344.773, 281.501, 364.251, 175.458, 336.958 )
+
+[node name="main_theme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
