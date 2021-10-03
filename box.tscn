@@ -13,18 +13,18 @@
 [ext_resource path="res://gfx/worried.png" type="Texture" id=11]
 [ext_resource path="res://gfx/base_overlay.png" type="Texture" id=12]
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id=1]
 rough = true
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 42.3823, 30.0149 )
 
 [node name="box" type="RigidBody2D"]
 position = Vector2( 509.008, 367.897 )
 input_pickable = true
 mode = 1
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 continuous_cd = 1
 contacts_reported = 10
 contact_monitor = true
@@ -57,7 +57,7 @@ visible = false
 texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -0.943937, -507.787 )

@@ -88,6 +88,7 @@ func _physics_process(delta):
 			drag_offset = mouse_position
 			box_instance.connect("body_entered", collision_handler, "collision_entered", [box_instance])
 			box_instance.connect("body_exited", collision_handler, "collision_exited", [box_instance])
+			box_instance.connect("body_entered", self, "_box_collision", [box_instance])
 			box_instance.get_node("VisibilityNotifier2D").connect("screen_exited", self, "_screen_exited_handler", [box_instance])
 			add_child(box_instance)
 		if box_instance != null:
@@ -99,8 +100,6 @@ func _physics_process(delta):
 	else:
 		if box_instance != null:
 			box_instance.drop()
-			box_instance.connect("mouse_entered", self, "_box_mouse_entered", [box_instance])
-			box_instance.connect("mouse_exited", self, "_box_mouse_exited", [box_instance])
 			box_instances.append(box_instance)
 			box_instance = null
 	# apply some random forces
@@ -121,3 +120,12 @@ func _process(delta):
 # Remove boxes for performance reasons
 func _screen_exited_handler(body):
 	outside.append(body)
+
+func _box_collision(body, other_body):
+	var count = 0
+	for box in box_instances:
+		var audio_player = box.get_node("thud_sound")
+		if audio_player.playing:
+			count += 1
+	if count < 5:
+		other_body.get_node("thud_sound").play()

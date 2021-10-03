@@ -5,15 +5,6 @@ var locked = false
 var emotion = "smiling"
 var dragging = false
 
-var max_speed = 1000.0
-
-
-func _init():
-	connect("body_entered", self, "collide")
-
-func is_locked():
-	return locked
-
 # Drag and drop
 func is_draggable():
 	return not locked and not dragging
@@ -58,7 +49,3 @@ func _on_CollisionShape2D_mouse_entered():
 	   mouse_hover = true
 func _on_CollisionShape2D_mouse_exited():
 	   mouse_hover = false
-
-
-func collide(body):
-		$thud_sound.play()
