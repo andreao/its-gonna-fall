@@ -9,7 +9,7 @@ var digit_instances = []
 
 func set_number(new_number):
 	for digit_instance in digit_instances:
-		digit_instance.queue_free()
+		remove_child(digit_instance)
 	var x = 0
 	while true:
 		var digit = new_number % 10
