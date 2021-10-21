@@ -116,6 +116,7 @@ func _move_camera_to_highest():
 
 func _process(delta):
 	_move_camera_to_highest()
+	collision_handler.find_path()
 	
 # Remove boxes for performance reasons
 func _screen_exited_handler(body):

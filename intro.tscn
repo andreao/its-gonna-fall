@@ -69,5 +69,5 @@ volume_db = 10.0
 
 [connection signal="button_down" from="play_button" to="play_button" method="_on_play_button_button_down"]
 [connection signal="button_up" from="play_button" to="play_button" method="_on_play_button_button_up"]
-[connection signal="pressed" from="play_button" to="play_button" method="_on_play_button_pressed"]
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="play_button" to="play_button" method="_on_play_button_pressed"]

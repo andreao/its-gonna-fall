@@ -11,13 +11,12 @@ var target
 var box_scene
 func _init(box_scene):
 	self.box_scene = box_scene
-	
+
 func collision_entered(body1, body2):
 	for collision in collisions:
 		if _connects(collision, body1, body2):
 			return
 	collisions.append([body1, body2])
-	_find_path()
 
 func collision_exited(body1, body2):
 	var new_collisions = []
@@ -25,12 +24,11 @@ func collision_exited(body1, body2):
 		if not _connects(collision, body1, body2):
 			new_collisions.append(collision)
 	collisions = new_collisions
-	_find_path()
 
 func _connects(collision, body1, body2):
 	return (collision[0] == body1 and collision[1] == body2) or (collision[1] == body1 and collision[0] == body2)
 	
-func _find_path():
+func find_path():
 	var path = []
 	var queue = [source]
 	while len(queue) > 0:
