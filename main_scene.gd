@@ -24,16 +24,7 @@ func _ready():
 	collision_handler.target = $ground
 	collision_handler.connect("path_changed", self, "_path_changed")
 	next_line()
-	_move_camera_to_highest()
-	
-func _move_camera_to(position):
-	var height_diff = $camera.position.y - position.y
-	if abs(height_diff) > 500:
-		var tween = $camera_transition_tween
-		if not tween.is_active():
-			tween.interpolate_property($camera, "position", null, 
-				Vector2(0, $camera.position.y - sign(height_diff)*200), 2, Tween.TRANS_CUBIC)
-			tween.start()
+	_move_camera_to_highest(true)
 
 func next_line():
 	var line_instance = line_scene.instance()
@@ -66,6 +57,7 @@ func _path_changed(path):
 		collision_handler.trim_boxes(box_instances)
 		
 		next_line()
+		_move_camera_to_highest(true)
 	
 func _get_collisions_at(position):
 	for collision in get_world_2d().direct_space_state.intersect_point(position, 1):
@@ -107,15 +99,26 @@ func _physics_process(delta):
 	#	box_instance.applied_torque = (randf() - 0.5) * 100000*delta
 	#	box_instance.applied_force = Vector2((randf() - 0.5) * 100000*delta, 0)
 
-func _move_camera_to_highest():
+func _move_camera_to_highest(force):
 	var max_height = min(300, collision_handler.source.position.y)
 	for body in box_instances:
 		if (body.connected or body.locked) and body.position.y < max_height:
 			max_height = body.position.y
-	_move_camera_to(Vector2(0, max_height))
-
+	var position = Vector2(0, max_height)
+	var height_diff = $camera.position.y - position.y
+	var line_height = collision_handler.source.position.y - 600
+	if abs(height_diff) > 500 or $camera.position.y >= line_height:
+		var tween = $camera_transition_tween
+		if force:
+			tween.stop_all()
+		if not tween.is_active():
+			var height = min($camera.position.y - sign(height_diff)*200, line_height)
+			tween.interpolate_property($camera, "position", null, 
+				Vector2(0, height), 2, Tween.TRANS_CUBIC)
+			tween.start()
+	
 func _process(delta):
-	_move_camera_to_highest()
+	_move_camera_to_highest(false)
 	collision_handler.find_path()
 	_handle_collision_audio()
 	
