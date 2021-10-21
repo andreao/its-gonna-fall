@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/main_scene.gd" type="Script" id=1]
 [ext_resource path="res://main/score_counter/number.gd" type="Script" id=2]
 [ext_resource path="res://main/theme.mp3" type="AudioStream" id=3]
 [ext_resource path="res://main/ground.png" type="Texture" id=4]
 [ext_resource path="res://main/hurray.mp3" type="AudioStream" id=5]
+[ext_resource path="res://main/cloud3.png" type="Texture" id=6]
+[ext_resource path="res://main/cloud1.png" type="Texture" id=7]
+[ext_resource path="res://main/cloud2.png" type="Texture" id=8]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
@@ -50,3 +53,22 @@ texture = ExtResource( 4 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ground"]
 position = Vector2( 35.0726, -606.177 )
 polygon = PoolVector2Array( 67.2427, 355.261, 15.0962, 379.721, -49.0485, 354.776, -109.557, 325.295, -205.449, 338.78, -250.398, 353.763, -319.882, 333.395, -394.717, 340.522, -476.68, 372.594, -545.565, 358.258, -708.88, 374.739, -679.778, 1054.6, 605.342, 1036.96, 613.78, 365.467, 468.789, 326.793, 369.901, 344.773, 281.501, 364.251, 175.458, 336.958 )
+
+[node name="cloud1" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.447059 )
+position = Vector2( -384.232, -1736.06 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="cloud2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.447059 )
+position = Vector2( -67.9149, -5409.36 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+
+[node name="cloud3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.447059 )
+position = Vector2( 386.694, -3447.14 )
+rotation = -0.0174533
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
