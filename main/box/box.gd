@@ -27,7 +27,7 @@ func _physics_process(delta):
 		var velocity = linear_velocity.length()
 		if velocity > 100:
 			if emotion != "scared":
-					$fall_sound.play()
+				$fall_sound.play()
 			emotion = "scared"
 		elif velocity > 10:
 			emotion = "worried"
