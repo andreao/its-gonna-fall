@@ -42,6 +42,8 @@ func find_path():
 			if body != source and body != target:
 				continue
 		path.append(body)
+		if body == target:
+			break
 		for other_collision in collisions:
 			if other_collision[0] == body:
 				queue.push_back(other_collision[1])
