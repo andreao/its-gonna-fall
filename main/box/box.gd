@@ -16,7 +16,7 @@ func drag():
 func drop():
 	dragging = false
 	mode = RigidBody2D.MODE_RIGID
-	linear_velocity = Vector2.ZERO
+	linear_velocity /= 10
 	can_sleep = false # since drag&drop a still box needs to kick start the physics engine
 	get_node("CollisionShape2D").disabled = false
 	$place_sound.play()
