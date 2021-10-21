@@ -56,6 +56,7 @@ func _path_changed(path):
 		
 		next_line()
 		_move_camera_to_highest(true)
+		$camera/hurray.play()
 	
 func _get_collisions_at(position):
 	for collision in get_world_2d().direct_space_state.intersect_point(position, 1):

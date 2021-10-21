@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://main/main_scene.gd" type="Script" id=1]
 [ext_resource path="res://main/score_counter/number.gd" type="Script" id=2]
 [ext_resource path="res://main/theme.mp3" type="AudioStream" id=3]
 [ext_resource path="res://main/ground.png" type="Texture" id=4]
+[ext_resource path="res://main/hurray.mp3" type="AudioStream" id=5]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
@@ -34,6 +35,10 @@ script = ExtResource( 2 )
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = true
+
+[node name="hurray" type="AudioStreamPlayer2D" parent="camera"]
+stream = ExtResource( 5 )
+pitch_scale = 1.5
 
 [node name="ground" type="StaticBody2D" parent="."]
 position = Vector2( -1.86304, 624.936 )
