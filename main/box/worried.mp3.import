@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/worried.mp3-8e80b722bd7fdeedb22ae0f993c9fd95.mp3str"
+
+[deps]
+
+source_file="res://main/box/worried.mp3"
+dest_files=[ "res://.import/worried.mp3-8e80b722bd7fdeedb22ae0f993c9fd95.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

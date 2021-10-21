@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hurray.mp3-ebd9a62541b8c6c3f2970d5e45c87601.mp3str"
+
+[deps]
+
+source_file="res://main/box/hurray.mp3"
+dest_files=[ "res://.import/hurray.mp3-ebd9a62541b8c6c3f2970d5e45c87601.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

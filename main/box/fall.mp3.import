@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fall.mp3-a3534a0e6d2d851440a90a7f67d72be0.mp3str"
+
+[deps]
+
+source_file="res://main/box/fall.mp3"
+dest_files=[ "res://.import/fall.mp3-a3534a0e6d2d851440a90a7f67d72be0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

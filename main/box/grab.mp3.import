@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/grab.mp3-a4f0ee71e30e1b6cb0f9cfe0cfb29c94.mp3str"
+
+[deps]
+
+source_file="res://main/box/grab.mp3"
+dest_files=[ "res://.import/grab.mp3-a4f0ee71e30e1b6cb0f9cfe0cfb29c94.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
