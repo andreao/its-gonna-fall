@@ -62,13 +62,13 @@ texture = ExtResource( 7 )
 
 [node name="cloud2" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.447059 )
-position = Vector2( -67.9149, -5409.36 )
+position = Vector2( -68.9149, -5409.36 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
 [node name="cloud3" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.447059 )
-position = Vector2( 386.694, -3447.14 )
+position = Vector2( 315.423, -3404.37 )
 rotation = -0.0174533
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
