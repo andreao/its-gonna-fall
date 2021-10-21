@@ -13,6 +13,8 @@ func _init(box_scene):
 	self.box_scene = box_scene
 
 func collision_entered(body1, body2):
+	if body1 == null or body2 == null:
+		return
 	for collision in collisions:
 		if _connects(collision, body1, body2):
 			return
