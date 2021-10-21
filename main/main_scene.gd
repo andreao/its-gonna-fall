@@ -69,7 +69,7 @@ func _physics_process(delta):
 	var mouse_position = get_global_mouse_position()
 	if Input.is_action_just_pressed("place"):
 		var hovered = _get_collisions_at(mouse_position)
-		if hovered != null:
+		if hovered != null and not hovered.get_filename() == line_scene.get_path():
 			if hovered in box_instances and hovered.is_draggable():
 				box_instance = hovered
 				drag_offset = mouse_position
