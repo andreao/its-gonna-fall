@@ -112,6 +112,7 @@ func _move_camera_to_highest(force):
 			tween.stop_all()
 		if not tween.is_active():
 			var height = min($camera.position.y - sign(height_diff)*200, line_height)
+			tween.remove_all()
 			tween.interpolate_property($camera, "position", null, 
 				Vector2(0, height), 2, Tween.TRANS_CUBIC)
 			tween.start()
