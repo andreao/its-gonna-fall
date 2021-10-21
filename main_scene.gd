@@ -117,16 +117,26 @@ func _move_camera_to_highest():
 func _process(delta):
 	_move_camera_to_highest()
 	collision_handler.find_path()
+	_handle_collision_audio()
 	
 # Remove boxes for performance reasons
 func _screen_exited_handler(body):
 	outside.append(body)
 
+
+var recent_collisions = []
 func _box_collision(body, other_body):
+	recent_collisions.append(other_body)
+func _handle_collision_audio():
 	var count = 0
 	for box in box_instances:
 		var audio_player = box.get_node("thud_sound")
 		if audio_player.playing:
 			count += 1
-	if count < 5:
-		other_body.get_node("thud_sound").play()
+	for body in recent_collisions:
+		if count < 10:
+			var audio_player = body.get_node("thud_sound")
+			if not audio_player.playing:
+				audio_player.play()
+				count += 1
+	recent_collisions.clear()
