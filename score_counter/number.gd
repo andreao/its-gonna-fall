@@ -1,9 +1,6 @@
 extends Node2D
 
-var digit_scene
-
-func _ready():
-	 digit_scene = load("res://digit.tscn")
+var digit_scene = preload("digit.tscn")
 
 var digit_instances = []
 
